@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Alyssa</title>
+    <meta name="author" content="Alyssa Quek" />
+    <meta name="robots" content="index, follow" />
+    <meta name="copyright" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <meta property="og:title" content="Rainbow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://github.com/alyssaq" />
+    <meta property="og:site_name" content="" />
+
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+    <link href='/styles/site.css' rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <h1> Login in with </h1>
+      <div id="signin"></div>
+    </div>
+
+  <script src="https://cdn.auth0.com/w2/auth0-widget-3.1.min.js"></script>
+  <script type="text/javascript">
+    var widget = new Auth0Widget({
+      domain:         'alyssa.auth0.com',
+      clientID:       'uMk0LXpEmYxae6OEcWsCJme2f5IsorK0',
+      callbackURL:    'http://localhost:3000/callback'
+    });
+    widget.signin({
+      connections: ['github'],
+      container: 'signin',
+      enableReturnUserExperience: false
+    })
+  </script>
+
+  </body>
+</html>
