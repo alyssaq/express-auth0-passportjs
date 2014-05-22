@@ -2,13 +2,13 @@ var express = require('express');
 var jwt = require('express-jwt');
 var cors = require('cors');
 var passport = require('passport');
-var strategy = require('./setup-passport');
-var config = require('./config')
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var morgan  = require('morgan');
 var compress = require('compression');
+var config = require('./config');
+var authenticate = require('./authenticate');
 
 var app = express();
 app.engine('html', require('ejs').renderFile); //Register ejs as html
@@ -17,6 +17,7 @@ app.set('view engine', 'html'); // Use .html extension
 
 app.use('/styles', express.static(__dirname + '/styles'));
 
+authenticate.setup(passport);
 app.use(morgan());
 app.use(cookieParser());
 app.use(bodyParser());
@@ -35,11 +36,6 @@ var corsOptions = {
 app.get('/', function (req, res) {
   res.render('index', {names: ['foo', 'bar', 'baz']});
 });
-
-app.use('/api', jwt({
-  audience: config.auth0.audience,
-  secret: new Buffer(config.auth0.secret, 'base64')
-}));
 
 app.get('/callback', passport.authenticate('auth0', {
   failureRedirect: '/url-if-something-fails',

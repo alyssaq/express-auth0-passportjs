@@ -9,8 +9,8 @@ For the full list of supported logins, check [auth0](https://auth0.com)
 
 ## Configure
 1. Create an account at [auth0](https://auth0.com)
-1. Open `app/config.js` and add your auth0 audience and secret keys
-1. Register an auth0 application in your [github](https://github.com) acount
+1. Register an auth0 application in your [github](https://github.com) acount with these instructions: [Obtaining a ClientId and Client Secret for GitHub](https://docs.auth0.com/github-clientid)
+1. Edit `app/config.js` to use your auth0 `domain`, `clientID` and `clientSecret` keys
 
 ## Running
 1. Run `npm start`
